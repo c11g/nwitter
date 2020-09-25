@@ -1,25 +1,32 @@
-import React, { useState } from 'react';
+import React from "react";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
-import Home from '../routes/Home';
-import Auth from '../routes/Auth';
+import Navigation from "components/Navigation";
+import Home from "routes/Home";
+import Auth from "routes/Auth";
+import Profile from "routes/Profile";
 
-const Router = () => {
-  const [isLogin, setIsLogin] = useState(!false);
-  return <BrowserRouter>
-    <Switch>
-      {
-        isLogin ? (<>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        </>) : (
-        <Route exact path="/">
-          <Auth />
-        </Route>
-        )
-      }
-    </Switch>
-  </BrowserRouter>
-}
+const Router = ({ isLogin }) => {
+  return (
+    <BrowserRouter>
+      {isLogin && <Navigation />}
+      <Switch>
+        {isLogin ? (
+          <>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+          </>
+        ) : (
+          <Route exact path="/">
+            <Auth />
+          </Route>
+        )}
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default Router;
