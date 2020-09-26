@@ -5,6 +5,7 @@ import { authService } from "fbase";
 function App() {
   const [init, setInit] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [userObj, setUserObj] = useState(null);
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -12,10 +13,19 @@ function App() {
       } else {
         setIsLogin(false);
       }
+      setUserObj(user);
       setInit(true);
     });
   }, []);
-  return <>{init ? <Router isLogin={isLogin} /> : <div>Loading</div>}</>;
+  return (
+    <>
+      {init ? (
+        <Router isLogin={isLogin} userObj={userObj} />
+      ) : (
+        <div>Loading</div>
+      )}
+    </>
+  );
 }
 
 export default App;
