@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { dbService } from "fbase";
+import { dbService, storageService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
 
 const Nweet = ({ nweet, isOwner }) => {
@@ -9,6 +9,9 @@ const Nweet = ({ nweet, isOwner }) => {
     const ok = window.confirm("Are you sure you want delete this nweet?");
     if (!ok) return;
     await dbService.collection(NWEETS_COLLECTION).doc(nweet.id).delete();
+    if (nweet.imgUrl) {
+      await storageService.refFromURL(nweet.imgUrl).delete();
+    }
   };
   const onToggleEdit = () => {
     setIsEdit((prev) => !prev);
@@ -46,6 +49,7 @@ const Nweet = ({ nweet, isOwner }) => {
       ) : (
         <div>
           <strong>{nweet.text}</strong>
+          {nweet.imgUrl && <img src={nweet.imgUrl} width="50" alt="" />}
           {isOwner && (
             <div>
               <button type="button" onClick={onDelete}>
