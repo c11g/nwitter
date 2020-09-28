@@ -5,10 +5,10 @@ import Home from "routes/Home";
 import Auth from "routes/Auth";
 import Profile from "routes/Profile";
 
-const Router = ({ isLogin, userObj }) => {
+const Router = ({ isLogin, userObj, refreshUser }) => {
   return (
     <BrowserRouter>
-      {isLogin && <Navigation />}
+      {isLogin && <Navigation userObj={userObj} />}
       <Switch>
         {isLogin ? (
           <>
@@ -16,7 +16,7 @@ const Router = ({ isLogin, userObj }) => {
               <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
-              <Profile />
+              <Profile userObj={userObj} refreshUser={refreshUser} />
             </Route>
           </>
         ) : (

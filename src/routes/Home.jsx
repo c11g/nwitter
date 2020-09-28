@@ -11,6 +11,7 @@ const Home = ({ userObj }) => {
   useEffect(() => {
     const unsubscribe = dbService
       .collection(NWEETS_COLLECTION)
+      .orderBy("createdAt")
       .onSnapshot((snapshot) => {
         const nweetArray = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -25,7 +26,7 @@ const Home = ({ userObj }) => {
     if (!nweet && !dataUrl) return;
     let fileUrl = null;
     if (dataUrl) {
-      const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
+      const fileRef = storageService.ref().child(`${userObj.uid}/nweets/${uuidv4()}`);
       const response = await fileRef.putString(dataUrl, "data_url");
       fileUrl = await response.ref.getDownloadURL();
     }
