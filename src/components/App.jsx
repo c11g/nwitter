@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Router from "components/Router";
 import { authService } from "fbase";
+import style from "./App.module.scss";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -32,8 +33,8 @@ function App() {
     <>
       {init ? (
         <Router isLogin={Boolean(userObj)} userObj={userObj} refreshUser={refreshUser} />
-      ) : (
-        <div>Loading</div>
+        ) : (
+        <div className={style.loading}>Loading</div>
       )}
     </>
   );
