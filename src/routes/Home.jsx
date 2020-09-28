@@ -23,7 +23,7 @@ const Home = ({ userObj }) => {
   const onSubmit = async (event) => {
     event.preventDefault();
     if (!nweet && !dataUrl) return;
-    let fileUrl;
+    let fileUrl = null;
     if (dataUrl) {
       const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`);
       const response = await fileRef.putString(dataUrl, "data_url");
@@ -33,7 +33,7 @@ const Home = ({ userObj }) => {
       text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
-      imgUrl: fileUrl ? fileUrl : null,
+      imgUrl: fileUrl,
     });
     setNweet("");
     setDataUrl(null);
