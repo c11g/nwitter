@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { dbService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
+import PropTypes from "prop-types";
 import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
 
@@ -34,6 +35,10 @@ const Home = ({ userObj }) => {
       </div>
     </div>
   );
+};
+
+Home.propTypes = {
+  userObj: PropTypes.object.isRequired
 };
 
 export default Home;

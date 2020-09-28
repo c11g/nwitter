@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
 import { NWEETS_COLLECTION } from "const";
+import PropTypes from "prop-types";
 
 const NweetFactory = ({userObj}) => {
   const [nweet, setNweet] = useState("");
@@ -66,5 +67,9 @@ const NweetFactory = ({userObj}) => {
     </form>
   );
 }
+
+NweetFactory.propTypes = {
+  userObj: PropTypes.object.isRequired
+};
 
 export default NweetFactory;

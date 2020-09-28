@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Navigation = ({ userObj }) => (
   <nav>
@@ -7,5 +8,9 @@ const Navigation = ({ userObj }) => (
     <Link to="/profile">{userObj.displayName}'s Profile</Link>
   </nav>
 );
+
+Navigation.propTypes = {
+  userObj: PropTypes.object.isRequired
+};
 
 export default Navigation;

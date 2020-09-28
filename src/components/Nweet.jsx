@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
+import PropTypes from "prop-types";
 
 const Nweet = ({ nweet, isOwner }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -65,5 +66,10 @@ const Nweet = ({ nweet, isOwner }) => {
     </div>
   );
 };
+
+Nweet.propTypes = {
+  nweet: PropTypes.object.isRequired,
+  isOwner: PropTypes.bool
+}
 
 export default Nweet;

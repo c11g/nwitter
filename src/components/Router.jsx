@@ -1,5 +1,6 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import PropTypes from "prop-types";
 import Navigation from "components/Navigation";
 import Home from "routes/Home";
 import Auth from "routes/Auth";
@@ -28,5 +29,11 @@ const Router = ({ isLogin, userObj, refreshUser }) => {
     </BrowserRouter>
   );
 };
+
+Router.propTypes = {
+  isLogin: PropTypes.bool.isRequired,
+  userObj: PropTypes.object.isRequired,
+  refreshUser: PropTypes.func.isRequired,
+}
 
 export default Router;

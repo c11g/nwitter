@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import PropTypes from "prop-types";
 import { authService, dbService, storageService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
 import { v4 as uuidv4 } from "uuid";
@@ -94,5 +95,10 @@ const Profile = ({ userObj, refreshUser }) => {
     </div>
   );
 };
+
+Profile.propTypes = {
+  userObj: PropTypes.object.isRequired,
+  refreshUser: PropTypes.func.isRequired,
+}
 
 export default Profile;
