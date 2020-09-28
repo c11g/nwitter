@@ -23,7 +23,7 @@ const Profile = ({ userObj, refreshUser }) => {
   useEffect(() => {
     getMyNweets();
   }, []);
-  const [newName, setNewName] = useState(userObj.displayName);
+  const [newName, setNewName] = useState(userObj.displayName||"");
   const onSubmit = async (event) => {
     event.preventDefault();
     if (userObj.displayName === newName && userObj.photoURL === photoUrl) return;
@@ -69,12 +69,12 @@ const Profile = ({ userObj, refreshUser }) => {
         {photoUrl && <img src={photoUrl} width="30" alt="" />}
         {
           isEdit ? (
-              <form onSubmit={onSubmit}>
-                <input type="file" accecpt="image/*" onChange={onFileChange} />
-                <input type="text" placeholder="Enter your display name" value={newName} onChange={onChange} />
-                <button>Update Profile</button>
-                <button type="button" onClick={toggleEdit}>Cancel</button>
-              </form>
+            <form onSubmit={onSubmit}>
+              <input type="file" accecpt="image/*" onChange={onFileChange} />
+              <input type="text" placeholder="Enter your display name" value={newName} onChange={onChange} />
+              <button>Update Profile</button>
+              <button type="button" onClick={toggleEdit}>Cancel</button>
+            </form>
           ) : (
             <div>
               <strong>{userObj.displayName}</strong>
