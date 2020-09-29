@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import PropTypes from "prop-types";
-import {DOMAIN_PATH_NAME} from "const";
+import {ROUTER_BASE_NAME} from "const";
 import Navigation from "components/Navigation";
 import Home from "routes/Home";
 import Auth from "routes/Auth";
@@ -9,20 +9,20 @@ import Profile from "routes/Profile";
 
 const Router = ({ isLogin, userObj, refreshUser }) => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={ROUTER_BASE_NAME}>
       {isLogin && <Navigation userObj={userObj} />}
       <Switch>
         {isLogin ? (
           <>
-            <Route exact path={`/${DOMAIN_PATH_NAME}`}>
+            <Route exact path="/">
               <Home userObj={userObj} />
             </Route>
-            <Route exact path={`/${DOMAIN_PATH_NAME}/profile`}>
+            <Route exact path="/profile">
               <Profile userObj={userObj} refreshUser={refreshUser} />
             </Route>
           </>
         ) : (
-          <Route exact path={`/${DOMAIN_PATH_NAME}`}>
+          <Route exact path="/">
             <Auth />
           </Route>
         )}

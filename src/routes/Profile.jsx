@@ -5,14 +5,13 @@ import { authService, dbService, storageService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
 import { v4 as uuidv4 } from "uuid";
 import Nweet from "components/Nweet";
-import {DOMAIN_PATH_NAME} from "const";
 import style from "./Profile.module.scss";
 
 const Profile = ({ userObj, refreshUser }) => {
   const history = useHistory();
   const onSignOut = () => {
     authService.signOut();
-    history.push(`/${DOMAIN_PATH_NAME}`);
+    history.push("");
   };
   const [myNweets, setMyNweets] = useState([]);
   const getMyNweets = async () => {
