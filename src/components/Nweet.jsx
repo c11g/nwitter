@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { dbService, storageService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
 import PropTypes from "prop-types";
+import style from "./Nweet.module.scss";
 
 const Nweet = ({ nweet, isOwner }) => {
   const [isEdit, setIsEdit] = useState(false);
@@ -31,37 +32,42 @@ const Nweet = ({ nweet, isOwner }) => {
     onToggleEdit();
   };
   return (
-    <div>
+    <div className={style.root}>
       {isEdit ? (
-        <div>
+        <>
           <form onSubmit={onSubmit}>
             <input
               type="text"
               value={newNweet}
               onChange={onNweetChange}
+              className={style.input}
               required
             />
-            <button type="submit">Update Nweet</button>
+            <div className={style.edit_buttons}>
+              <button type="submit" className={style.update}>Update</button>
+              <button type="button" onClick={onToggleEdit} className={style.cancel}>
+                Cancel
+              </button>
+            </div>
           </form>
-          <button type="button" onClick={onToggleEdit}>
-            Cancel
-          </button>
-        </div>
+        </>
       ) : (
-        <div>
-          <strong>{nweet.text}</strong>
-          {nweet.imgUrl && <img src={nweet.imgUrl} width="50" alt="" />}
+        <>
+          <div className={style.content}>
+            <strong className={style.text}>{nweet.text}</strong>
+            {nweet.imgUrl && <img src={nweet.imgUrl} className={style.img} width="50" alt="" />}
+          </div>
           {isOwner && (
-            <div>
-              <button type="button" onClick={onDelete}>
+            <div className={style.buttons}>
+              <button type="button" onClick={onDelete}  className={style.button}>
                 Delete
               </button>
-              <button type="button" onClick={onToggleEdit}>
+              <button type="button" onClick={onToggleEdit}  className={style.button}>
                 Edit
               </button>
             </div>
           )}
-        </div>
+        </>
       )}
     </div>
   );

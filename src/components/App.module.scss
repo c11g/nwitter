@@ -1,5 +1,22 @@
-@import-normalize;
+@import "style/reset.scss";
+@import "style/mixin.scss";
+
+.root {
+  @include flexAlignCenter;
+  flex-direction: column;
+  height: 100vh;
+  background: #333;
+}
 
 .loading {
-  background: #000;
+  @include flexAlignCenter;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(#000, .5);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
 }

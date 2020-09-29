@@ -5,6 +5,7 @@ import { authService, dbService, storageService } from "fbase";
 import { NWEETS_COLLECTION } from "const";
 import { v4 as uuidv4 } from "uuid";
 import Nweet from "components/Nweet";
+import style from "./Profile.module.scss";
 
 const Profile = ({ userObj, refreshUser }) => {
   const history = useHistory();
@@ -59,32 +60,32 @@ const Profile = ({ userObj, refreshUser }) => {
   const [isEdit, setIsEdit] = useState(false);
   const toggleEdit = () => setIsEdit(prev => !prev);
   return (
-    <div>
-      <div>
-        <h1>Profile</h1>
-        <button type="button" onClick={onSignOut}>
-          Sign Out
-        </button>
-      </div>
-      <div>
-        {photoUrl && <img src={photoUrl} width="30" alt="" />}
+    <div className={style.root}>
+      <div className={style.profile}>
+        {photoUrl && <img src={photoUrl} className={style.img} width="30" alt="" />}
         {
           isEdit ? (
             <form onSubmit={onSubmit}>
-              <input type="file" accecpt="image/*" onChange={onFileChange} />
-              <input type="text" placeholder="Enter your display name" value={newName} onChange={onChange} />
-              <button>Update Profile</button>
-              <button type="button" onClick={toggleEdit}>Cancel</button>
+              <div className={style.file_wrap}>
+                <input type="file" accept="image/*" onChange={onFileChange} className={style.file} />
+                <div className={style.file_ui}>Edit Image</div>
+              </div>
+              <input type="text" placeholder="Enter your display name" value={newName} onChange={onChange} className={style.input} />
+              <button className={style.update}>Update</button>
+              <button type="button" onClick={toggleEdit} className={style.cancel}>Cancel</button>
             </form>
           ) : (
             <div>
-              <strong>{userObj.displayName}</strong>
-              <button type="button" onClick={toggleEdit}>Edit Profile</button>
+              <strong className={style.name}>{userObj.displayName}</strong>
+              <button type="button" onClick={toggleEdit} className={style.edit}>Edit</button>
             </div>
           )
         }
+        <button type="button" onClick={onSignOut} className={style.signout}>
+          Sign Out
+        </button>
       </div>
-      <div>
+      <div className={style.nweet}>
         {
           myNweets.map(nweet => <Nweet
             key={nweet.id}

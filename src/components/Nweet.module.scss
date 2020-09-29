@@ -1,0 +1,65 @@
+@import "style/mixin.scss";
+
+.root {
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f4f4f4;
+}
+
+.content {
+  display: flex;
+}
+
+.text {
+  flex: 1;
+}
+
+.img {
+  flex-shrink: 0;
+  margin-left: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.buttons {
+  display: block;
+  margin-bottom: -10px;
+  margin-left: auto;
+}
+
+.button {
+  padding: 5px 10px;
+  background: none;
+  color: #e26c6c;
+  cursor: pointer;
+}
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #6c9be2;
+  border-radius: 3px;
+}
+
+.edit_buttons {
+  margin-top: 5px;
+}
+
+.update {
+  padding: 5px 10px;
+  background: none;
+  color: #35a51e;
+  cursor: pointer;
+}
+
+.cancel {
+  padding: 5px 10px;
+  background: none;
+  color: #e26c6c;
+  cursor: pointer;
+}

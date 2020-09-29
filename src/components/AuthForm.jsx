@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import { authService } from 'fbase';
+import React, { useState } from "react";
+import { authService } from "fbase";
+import style from "./AuthForm.module.scss"
 
 const AuthForm = () => {
   const [email, setEmail] = useState("");
@@ -30,35 +31,35 @@ const AuthForm = () => {
   };
   const toggleAccount = () => setHasAccount((prev) => !prev);
   return (
-    <>
-    <form onSubmit={onSubmit}>
-      <input
-        name="email"
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={onChange}
-        required
-      />
-      <div>{error}</div>
-      <input
-        name="password"
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={onChange}
-        required
-      />
-      <button type="submit">
-        {hasAccount ? "Sign In" : "Create Account"}
-      </button>
-    </form>
-    <div>
-      <button type="button" onClick={toggleAccount}>
+    <div className={style.root}>
+      <form onSubmit={onSubmit} className={style.form}>
+        <input
+          className={style.input}
+          name="email"
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={onChange}
+          required
+        />
+        <input
+          className={style.input}
+          name="password"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={onChange}
+          required
+        />
+        <div className={style.error}>{error}</div>
+        <button type="submit" className={style.submit}>
+          {hasAccount ? "Sign In" : "Create Account"}
+        </button>
+      </form>
+      <button type="button" onClick={toggleAccount} className={style.toggle}>
         {hasAccount ? "계정이 없으면 새로 만들어주세요." : "계정이 있으면 로그인해주세요."}
       </button>
     </div>
-    </>
   )
 }
 

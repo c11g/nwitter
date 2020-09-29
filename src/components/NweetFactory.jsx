@@ -3,6 +3,7 @@ import { dbService, storageService } from "fbase";
 import { v4 as uuidv4 } from "uuid";
 import { NWEETS_COLLECTION } from "const";
 import PropTypes from "prop-types";
+import style from "./NweetFactory.module.scss";
 
 const NweetFactory = ({userObj}) => {
   const [nweet, setNweet] = useState("");
@@ -47,19 +48,23 @@ const NweetFactory = ({userObj}) => {
   };
   const onClearPhoto = () => setDataUrl(null);
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} className={style.root}>
       <input
         type="text"
         placeholder="What's on your mind?"
         value={nweet}
         onChange={onChange}
+        className={style.input}
       />
-      <input type="file" accept="image/*" onChange={onFileChange} />
-      <button type="submit">Nweet</button>
+      <div className={style.file_wrap}>
+        <input type="file" accept="image/*" onChange={onFileChange} className={style.file} />
+        <div className={style.file_ui}>Upload Image</div>
+      </div>
+      <button type="submit" className={style.submit}>Nweet</button>
       {dataUrl && (
-        <div>
-          <img src={dataUrl} alt="" width="50" />
-          <button type="button" onClick={onClearPhoto}>
+        <div className={style.img_wrap}>
+          <img src={dataUrl} alt="" width="50" className={style.img} />
+          <button type="button" onClick={onClearPhoto} className={style.clear}>
             Clear
           </button>
         </div>

@@ -4,6 +4,7 @@ import { NWEETS_COLLECTION } from "const";
 import PropTypes from "prop-types";
 import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
+import style from "./Home.module.scss";
 
 const Home = ({ userObj }) => {
   const [nweets, setNweets] = useState([]);
@@ -21,10 +22,9 @@ const Home = ({ userObj }) => {
     return () => unsubscribe();
   }, []);
   return (
-    <div>
-      <h1>Home</h1>
+    <div className={style.root}>
       <NweetFactory userObj={userObj} />
-      <div>
+      <div className={style.nweet}>
         {nweets.map((nweet) => (
           <Nweet
             key={nweet.id}

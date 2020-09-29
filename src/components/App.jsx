@@ -30,13 +30,13 @@ function App() {
     });
   }
   return (
-    <>
+    <div className={style.root}>
       {init ? (
         <Router isLogin={Boolean(userObj)} userObj={userObj} refreshUser={refreshUser} />
         ) : (
-        <div className={style.loading}>Loading</div>
+        <div className={style.loading}>Loading...</div>
       )}
-    </>
+    </div>
   );
 }
 

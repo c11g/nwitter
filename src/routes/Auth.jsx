@@ -1,6 +1,7 @@
 import React from "react";
 import { firebaseRefer, authService } from "fbase";
-import AuthForm from 'components/AuthForm';
+import AuthForm from "components/AuthForm";
+import style from "./Auth.module.scss";
 
 const Auth = () => {
   const onSocialClick = async (event) => {
@@ -16,14 +17,18 @@ const Auth = () => {
     await authService.signInWithPopup(provider);
   };
   return (
-    <div>
+    <div className={style.root}>
       <AuthForm />
-      <div>
-        <button name="google" type="button" onClick={onSocialClick}>
-          Login with Google
+      <div className={style.buttons}>
+        <button name="google" type="button" onClick={onSocialClick}
+          className={style.button}
+        >
+          Sign In With Google
         </button>
-        <button name="github" type="button" onClick={onSocialClick}>
-          Login with Github
+        <button name="github" type="button" onClick={onSocialClick}
+          className={style.button}
+        >
+          Sign In With Github
         </button>
       </div>
     </div>

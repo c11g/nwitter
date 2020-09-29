@@ -32,7 +32,7 @@ const Router = ({ isLogin, userObj, refreshUser }) => {
 
 Router.propTypes = {
   isLogin: PropTypes.bool.isRequired,
-  userObj: PropTypes.object.isRequired,
+  userObj: PropTypes.object,
   refreshUser: PropTypes.func.isRequired,
 }
 

@@ -1,0 +1,43 @@
+@import "style/mixin.scss";
+
+.root {
+
+}
+
+.input {
+  display: block;
+  box-sizing: border-box;
+  margin: 5px 0;
+  width: 100%;
+  padding: 10px 15px;
+  border: 0;
+  border-radius: 6px;
+  background: #f4f4f4;
+}
+
+.submit {
+  display: block;
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 8px;
+  padding: 10px;
+  background: #2fd381;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.toggle {
+  background: none;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: underline;
+  color: #fff;
+  cursor: pointer;
+}
+
+.error {
+  font-size: 13px;
+  line-height: 16px;
+  color: #dd5e5e
+}
