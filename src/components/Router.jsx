@@ -8,7 +8,6 @@ import Auth from "routes/Auth";
 import Profile from "routes/Profile";
 
 const Router = ({ isLogin, userObj, refreshUser }) => {
-  console.log("Router fire");
   return (
     <BrowserRouter>
       {isLogin && <Navigation userObj={userObj} />}

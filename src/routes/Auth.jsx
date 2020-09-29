@@ -4,7 +4,6 @@ import AuthForm from "components/AuthForm";
 import style from "./Auth.module.scss";
 
 const Auth = () => {
-  console.log("Auth fire");
   const onSocialClick = async (event) => {
     const {
       target: { name },
